@@ -6,15 +6,22 @@ $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
+
     <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Congratulations!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <div class="row d-flex justify-content-center">
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Cadastrar salas</a></p>
+            <img src="<?= Yii::$app->request->baseUrl ?>/img/logo.png" width='200px' height='200px'>
+
+        </div>
+        <h1 class="display-4">Dashboard</h1>
+
+        <p class="lead">Ainda em fase de desenvolvimento.</p>
+
+        <!-- <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Cadastrar salas</a></p> -->
     </div>
 
-    <div class="body-content">
+    <!--  <div class="body-content">
 
         <div class="row">
             <div class="col-lg-4">
@@ -49,5 +56,5 @@ $this->title = 'My Yii Application';
             </div>
         </div>
 
-    </div>
+    </div> -->
 </div>

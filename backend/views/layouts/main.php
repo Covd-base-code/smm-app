@@ -11,8 +11,9 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 
 AppAsset::register($this);
+$this->beginContent('@backend/views/layouts/base.php');
 ?>
-<?php $this->beginPage() ?>
+<!-- <?php $this->beginPage() ?> -->
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 
@@ -33,13 +34,13 @@ AppAsset::register($this);
             'brandLabel' => Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
+                'class' => 'navbar-expand-lg navbar-light bg-danger shadow-sm fixed-top',
             ],
         ]);
-        $menuItems = [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Sala', 'url' => ['/sala/create']],
-        ];
+        // $menuItems = [
+        //     ['label' => 'Home', 'url' => ['/site/index']],
+        //     // ['label' => 'Sala', 'url' => ['/sala/create']],
+        // ];
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
         } else {
@@ -53,14 +54,15 @@ AppAsset::register($this);
                 . '</li>';
         }
         echo Nav::widget([
-            'options' => ['class' => 'navbar-nav'],
+            'options' => ['class' => 'navbar-nav  ml-auto'],
             'items' => $menuItems,
         ]);
         NavBar::end();
         ?>
     </header>
 
-    <main role="main" class="flex-shrink-0">
+    <main role="main" class="d-flex flex-shrink-0">
+        <?php echo $this->render('sidebar') ?>
         <div class="container">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -70,15 +72,16 @@ AppAsset::register($this);
         </div>
     </main>
 
-    <footer class="footer mt-auto py-3 text-muted">
+    <!-- <footer class="footer mt-auto py-3 text-muted">
         <div class="container">
             <p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
             <p class="float-right"><?= Yii::powered() ?></p>
         </div>
-    </footer>
+    </footer> -->
 
     <?php $this->endBody() ?>
 </body>
 
 </html>
-<?php $this->endPage();
+
+<?php $this->endContent(); ?>

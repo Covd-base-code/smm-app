@@ -31,23 +31,29 @@
 <aside class="shadow">
   <?php
 
+  use common\models\Agendamento;
+
+  $model = new Agendamento();
+
   echo \yii\bootstrap4\Nav::widget([
+
+
 
     'options' => [
       'class' => 'd-flex flex-column nav-pills mt-5'
     ],
     'items' => [
-      // [
-      //   'label' => 'Dashboard', 'url' => ['/requisicoes/home']
-      // ],
+      [
+        'label' => 'Inicio', 'url' => ['/site/index']
+      ],
       [
         'label' => 'Salas', 'url' => ['/sala/index']
       ],
       [
-        'label' => 'Requisitar', 'url' => ['/agendamento/create']
+        'label' => 'Agendamentos', 'url' => ['/agendamento/index']
       ],
       [
-        'label' => 'Requisições', 'url' => ['/agendamento/index']
+        'label' => 'Requisições', 'url' => [Yii::$app->urlManager->createUrl('frontend/agendamento/index.php')]
       ],
       [
         'label' => 'Lista', 'url' => ['/csv-form/create']

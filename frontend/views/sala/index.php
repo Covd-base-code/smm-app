@@ -1,29 +1,22 @@
 <?php
 
-use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\bootstrap4\Html;
 
-/* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Salas';
+/** @var $dataProvider \use yii\data\ActiveDataProvider;*/
+
+$this->title = 'Salas Disponiveis';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="sala-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Criar Sala', ['create'], ['class' => 'btn btn-danger']) ?>
-    </p>
-
-
-    <?= GridView::widget([
+    <?php echo \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
+        // 'itemView' => 'free_room'
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'id',
             'nome',
             'lotacao',
             'localizacao',
@@ -33,12 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->getStatusLabels()[$model->estado];
                 }
             ],
-
-            //'created_by',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            // [
+            //     'class' => 'yii\grid\ActionColumn',
+            //     'buttons' => ['requisitar']
+            // ],
         ],
-    ]); ?>
-
+    ]) ?>
 
 </div>

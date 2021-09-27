@@ -31,4 +31,9 @@ class AgendamentoQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    public function latest()
+    {
+        return $this->orderBy(['created_at' => SORT_DESC]);
+    }
 }

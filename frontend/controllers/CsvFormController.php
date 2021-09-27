@@ -3,14 +3,15 @@
 namespace frontend\controllers;
 
 use Yii;
+use yii\db\Exception;
+use yii\db\Expression;
 use yii\web\Controller;
 use common\models\Lista;
 use yii\web\UploadedFile;
-use yii\db\Exception;
 use common\models\CsvForm;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
-use yii\db\Expression;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -26,6 +27,16 @@ class CsvFormController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'roles' => ['@']
+                        ]
+                    ]
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -43,7 +54,7 @@ class CsvFormController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => CsvForm::find(),
+            'query' => CsvForm::find()->andWhere(['created_by' => Yii::$app->user->id]),
             /*
             'pagination' => [
                 'pageSize' => 50

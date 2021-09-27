@@ -2,11 +2,12 @@
 
 namespace backend\controllers;
 
+use Yii;
 use common\models\Sala;
-use yii\data\ActiveDataProvider;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
+use yii\web\NotFoundHttpException;
 
 /**
  * SalaController implements the CRUD actions for Sala model.
@@ -39,7 +40,7 @@ class SalaController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Sala::find(),
-            /*
+            /*->andWhere(['created_by' => Yii::$app->user->id])
             'pagination' => [
                 'pageSize' => 50
             ],
@@ -80,6 +81,7 @@ class SalaController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                Yii::$app->session->setFlash('success', "Lista submetida com sucesso.");
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {

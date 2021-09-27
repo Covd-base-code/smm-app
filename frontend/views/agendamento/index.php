@@ -17,9 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Fazer Agendamento', ['create'], ['class' => 'btn btn-danger']) ?>
     </p>
 
-    <p class="mr-auto">
+    <!-- <p class="mr-auto">
         <?= Html::a('Submeter lista', ['create'], ['class' => 'btn btn-danger']) ?>
-    </p>
+    </p> -->
 
 
     <?= GridView::widget([
@@ -32,10 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'endereco',
             'nuit',
             'contacto',
-            // 'created_at:datetime',
-            //'created_by',
+            'created_at:date',
+            // 'created_by',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'buttons' => []
+            ],
         ],
     ]); ?>
 

@@ -2,6 +2,8 @@
 
 namespace common\models\query;
 
+use common\models\Sala;
+
 /**
  * This is the ActiveQuery class for [[\common\models\Sala]].
  *
@@ -30,5 +32,11 @@ class SalaQuery extends \yii\db\ActiveQuery
     public function one($db = null)
     {
         return parent::one($db);
+    }
+
+
+    public function freeRooms()
+    {
+        return $this->andWhere(['estado' => 0]);
     }
 }

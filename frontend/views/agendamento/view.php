@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'endereco',
             'nuit',
             'contacto',
-            'created_at',
+            'created_at:datetime',
             'created_by',
             'sala',
         ],

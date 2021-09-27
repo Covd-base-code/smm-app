@@ -7,6 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model common\models\Agendamento */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $dataProvider frontend\controllers\salaController */
 ?>
 
 <div class="agendamento-form">

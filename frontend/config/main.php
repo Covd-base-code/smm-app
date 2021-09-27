@@ -8,9 +8,9 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
-    'name' => 'SMM',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    // 'defaultRoute' => '/frontend/requisicoes/home',
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
@@ -43,6 +43,9 @@ return [
             'showScriptName' => false,
             'rules' => [],
         ],
+        'assetManager' => [
+            'appendTimestamp' => true
+        ]
 
     ],
     'params' => $params,
