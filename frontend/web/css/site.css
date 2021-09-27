@@ -88,3 +88,73 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+
+body {
+    font-family: "Lato", sans-serif;
+  }
+  
+  .sidenav {
+    height: 90%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(61, 54, 54);
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+
+  aside .nav-pills .nav-link {
+    border-radius: 0;
+    color: #444444;
+}
+
+aside .nav-pills .nav-link:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+aside .nav-pills .nav-link.active {
+
+    background: rgba(0, 0, 0, 0.05);
+    color: #b90000;
+    border-left: 4px solid #b90000;
+}
+
+aside {
+    min-width: 200px;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+main {
+    flex: 1;
+}
+
