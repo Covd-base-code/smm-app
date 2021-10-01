@@ -14,8 +14,8 @@ NavBar::begin([
 ]);
 
 if (Yii::$app->user->isGuest) {
-    $menuItems[] = ['label' => 'Registar', 'url' => ['/site/signup']];
-    $menuItems[] = ['label' => 'Entrar', 'url' => ['/site/login']];
+    $menuItems[] = ['label' => 'Registar', 'url' => ['/../site/signup']];
+    $menuItems[] = ['label' => 'Entrar', 'url' => ['/../site/login']];
 } else {
     $menuItems[] = '<li>'
         . Html::beginForm(['/site/logout'], 'post')

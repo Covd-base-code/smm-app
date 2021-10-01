@@ -50,7 +50,7 @@
         'label' => 'Requisições', 'url' => ['/agendamento/index']
       ],
       [
-        'label' => 'Lista', 'url' => ['/csv-form/create']
+        'label' => 'Listas', 'url' => ['/lista/create']
       ],
     ]
   ]) ?>

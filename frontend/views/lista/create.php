@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Lista */
 
-$this->title = 'Create Lista';
+$this->title = 'Submeter Lista';
 $this->params['breadcrumbs'][] = ['label' => 'Listas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -13,8 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <!-- <?= $this->render('upload', [
-                'model' => $model,
-            ]) ?> -->
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
 
 </div>

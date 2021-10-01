@@ -6,6 +6,8 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use common\models\Agendamento;
+// use GuzzleHttp\Psr7\UploadedFile;
+use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
@@ -15,6 +17,8 @@ use yii\web\NotFoundHttpException;
  */
 class AgendamentoController extends Controller
 {
+
+
     /**
      * @inheritDoc
      */
@@ -100,6 +104,7 @@ class AgendamentoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+
                 Yii::$app->session->setFlash('success', "Agendamento feito com sucesso.");
                 return $this->actionIndex();
             }

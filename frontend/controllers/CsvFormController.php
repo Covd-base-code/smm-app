@@ -2,6 +2,11 @@
 
 namespace frontend\controllers;
 
+
+// require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Yii;
 use yii\db\Exception;
 use yii\db\Expression;
@@ -164,31 +169,54 @@ class CsvFormController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
 
-            $model->file = UploadedFile::getInstance($model, 'file');
+
+            $model->request = UploadedFile::getInstance($model, 'requisicao');
+            $requisicao = $model->request;
+            $req = UploadedFile::getInstance($model, 'requisicao');
 
             if ($model->file) {
                 $time = time();
-                $filename = 'Lista-vacinacao.' . $model->file->extension;
-                $csv = Yii::getAlias('@frontend/web/storage/listas/' . $filename);
+                $filename = $model->file;
+                $csv = Yii::getAlias('@frontend/web/storage/listas/' . $time . $filename);
                 $model->file->saveAs($csv);
                 $model->file =  $filename;
 
-                $handle = fopen($model->file, "r");
-                while (($data = fgetcsv($handle, 1000, ",")) !== false) {
-                    $nome = $data[0];
-                    $sexo = $data[1];
-                    $data_nascimento = $data[2];
-                    $provincia = $data[3];
-                    $distrito = $data[4];
-                    $endereco = $data[5];
-                    $profissao = $data[6];
-                    $tipo_beneficiario = $data[7];
-                    $tipo_documento = $data[8];
-                    $numero_documento = $data[9];
-                    // $requisicao = $data[10];
-                    // print_r($fileop);exit();
-                    $sql = "INSERT INTO lista(nome, sexo, data_nascimento,provincia,distrito,endereco,profissao,tipo_beneficiario,tipo_documento,numero_documento,requisicao) VALUES ('$nome', '$sexo', '2020-11-20','$provincia', '$distrito','$endereco','$profissao', '$tipo_beneficiario', '$tipo_documento','$numero_documento','1')";
-                    $query = Yii::$app->db->createCommand($sql)->execute();
+                $handle = fopen($csv, "r");
+                if ($handle) {
+
+                    while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+
+                        $lsl = new Lista();
+                        $nome = $data[0];
+                        $sexo = $data[1];
+                        $data_nascimento = $data[2];
+                        $provincia = $data[3];
+                        $distrito = $data[4];
+                        $endereco = $data[5];
+                        $profissao = $data[6];
+                        $tipo_beneficiario = $data[7];
+                        $tipo_documento = $data[8];
+                        $numero_documento = $data[9];
+                        $requisicao = 1;
+                        // $lsl->save();
+                        // $created_at = date("Y/m/d");
+                        // $updated_at = date("Y/m/d");
+                        // $nome = $data[0];
+                        // $sexo = $data[1];
+                        // $data_nascimento = $data[2];
+                        // $provincia = $data[3];
+                        // $distrito = $data[4];
+                        // $endereco = $data[5];
+                        // $profissao = $data[6];
+                        // $tipo_beneficiario = $data[7];
+                        // $tipo_documento = $data[8];
+                        // $numero_documento = $data[9];
+
+                        // print_r($handle);
+                        // exit();
+                        $sql = "INSERT INTO lista(nome, sexo, data_nascimento,provincia,distrito,endereco,profissao,tipo_beneficiario,tipo_documento,numero_documento,requisicao) VALUES ('$nome', '$sexo', '2020-11-20','$provincia', '$distrito','$endereco','$profissao', '$tipo_beneficiario', '$tipo_documento','$numero_documento','$requisicao')";
+                        $query = Yii::$app->db->createCommand($sql)->execute();
+                    }
                 }
 
                 if ($query) {
@@ -196,55 +224,6 @@ class CsvFormController extends Controller
                 }
             }
         }
-
-        $model->save();
         return $this->render('create', ['model' => $model]);
-
-        // // if ($this->request->isPost) {
-        // if ($model->load(Yii::$app->request->post())) {
-        //     $file = UploadedFile::getInstance($model, 'file');
-
-        //     $filename = 'Lista-vacinacao.' . $file->extension;
-        //     $csv = Yii::getAlias('@frontend/views/lista/' . $filename);
-        //     $upload = $file->saveAs($csv);
-        //     if ($upload) {
-
-        //         // define('CSV_PATH', '@frontend/views/lista/');
-        //         $csv_file = Yii::getAlias('@frontend/views/lista/' . $filename);
-        //         $filecsv = file($csv_file);
-        //         print_r($filecsv);
-        //         foreach ($filecsv as $data) {
-        //             $modelnew = new Lista();
-        //             $data = explode(",", $data);
-
-        //             $nome = $data[0];
-        //             $sexo = $data[1];
-        //             $data_nascimento = $data[2];
-        //             $provincia = $data[3];
-        //             $distrito = $data[4];
-        //             $profissao = $data[5];
-        //             $tipo_beneficiario = $data[6];
-        //             $tipo_documento = $data[7];
-        //             $numero_documento = $data[8];
-        //             $requisicao = $data[9];
-        //             $modelnew->nome = $nome;
-        //             $modelnew->sexo = $sexo;
-        //             $modelnew->data_nascimento = $data_nascimento;
-        //             $modelnew->provincia = $provincia;
-        //             $modelnew->distrito = $distrito;
-        //             $modelnew->profissao = $profissao;
-        //             $modelnew->tipo_beneficiario = $tipo_beneficiario;
-        //             $modelnew->tipo_documento = $tipo_documento;
-        //             $modelnew->numero_documento = $numero_documento;
-        //             $modelnew->requisicao = $requisicao;
-        //             $modelnew->save();
-        //         }
-        //         unlink($csv);
-        //         return $this->redirect(['/csv-form/index']);
-        //     }
-        // } else {
-        //     return $this->render('create', ['model' => $model]);
-        // }
-        // }
     }
 }

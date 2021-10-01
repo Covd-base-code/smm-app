@@ -27,6 +27,8 @@ use common\models\query\ListaQuery;
 class Lista extends \yii\db\ActiveRecord
 {
     public $lista;
+
+    // const Scenario = 'import';
     /**
      * {@inheritdoc}
      */
@@ -35,12 +37,20 @@ class Lista extends \yii\db\ActiveRecord
         return '{{%lista}}';
     }
 
+    // public  function scenarios()
+    // {
+    //     return [
+    //         self::Scenario => ['lista']
+    //     ];
+    // }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
+            // [['lista'], 'required', 'on' => self::Scenario, 'message' => '{attribute}, Coloque um file'],
             [['nome', 'sexo', 'data_nascimento', 'provincia', 'distrito', 'endereco', 'profissao', 'tipo_beneficiario', 'tipo_documento', 'numero_documento'], 'required'],
             [['data_nascimento'], 'safe'],
             [['requisicao', 'created_by', 'created_at', 'updated_at'], 'integer'],

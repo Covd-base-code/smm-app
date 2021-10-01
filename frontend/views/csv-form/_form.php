@@ -11,8 +11,10 @@ use yii\widgets\ActiveForm;
 <div class="csv-form-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-    <!-- <p><?php echo $form->errorSummary($model) ?></p> -->
+    <p><?php echo $form->errorSummary($model) ?></p>
 
+
+    <?= $form->field($model, 'requisicao')->textInput() ?>
     <?= $form->field($model, 'file')->fileInput() ?>
 
     <div class="form-group">

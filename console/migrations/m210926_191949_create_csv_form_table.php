@@ -15,6 +15,7 @@ class m210926_191949_create_csv_form_table extends Migration
         $this->createTable('{{%csv_form}}', [
             'id' => $this->primaryKey(),
             'file' => $this->string(),
+            'requisicao' => $this->integer(),
         ]);
     }
 

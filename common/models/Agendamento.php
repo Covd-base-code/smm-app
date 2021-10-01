@@ -21,6 +21,7 @@ use yii\behaviors\TimestampBehavior;
  */
 class Agendamento extends \yii\db\ActiveRecord
 {
+    // public $file;
 
     public function behaviors()
     {
@@ -51,7 +52,7 @@ class Agendamento extends \yii\db\ActiveRecord
             [['data_agendamento'], 'safe'],
             [['nuit', 'created_at', 'created_by', 'updated_at', 'sala'], 'integer'],
             [['empresa', 'endereco', 'contacto'], 'string', 'max' => 255],
-            // ['lista', 'file', 'extensions' => ['csv']],
+            // [['file'], 'file'],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']]
         ];
     }

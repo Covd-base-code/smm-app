@@ -23,6 +23,8 @@ $this->beginContent('@backend/views/layouts/base.php');
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link rel="shortcut icon" href="<?= Yii::$app->request->baseUrl ?>/img/logo.png" type="image/x-icon" />
+
 </head>
 
 <body class="d-flex flex-column h-100">

@@ -20,9 +20,8 @@
 
     <h1 class="display-4">Dashboard</h1>
 
-    <p class="lead">Ainda em fase de desenvolvimento.</p>
+    <p class="lead">Em desenvolvimento.</p>
 
-    <!-- <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Cadastrar salas</a></p> -->
 </div>
 
 

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use common\models\Sala;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Agendamento */
@@ -28,7 +29,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'data_agendamento')->Input('date') ?>
 
-    <?= $form->field($model, 'sala')->input('number') ?>
+    <?= $form->field($model, 'sala')->dropdownList(ArrayHelper::map(Sala::find()->where(['estado' => 0])->distinct()->orderBy('nome ASC')->asArray()->all(), 'id', 'nome'), ['prompt' => 'Selecione uma sala']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Submeter', ['class' => 'btn btn-danger']) ?>

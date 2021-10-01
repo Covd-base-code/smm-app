@@ -18,7 +18,7 @@ $this->title = 'SMM';
 
         <p class="lead">Baixe e preencha o ficheiro de template excel abaixo</p>
 
-        <p><a class="btn btn-lg btn-danger" download="template_vacinacao" href="<?= Yii::$app->request->baseUrl ?>/img/inicial-consultorio.png">Baixar template</a></p>
+        <p><a class="btn btn-lg btn-danger" download="template_vacinacao" href="<?= Yii::$app->request->baseUrl ?>/storage/listas/lista.xlsx">Baixar template</a></p>
     </div>
 
     <div class="body-content">

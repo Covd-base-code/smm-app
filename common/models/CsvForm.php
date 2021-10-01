@@ -12,12 +12,13 @@ use Yii;
 class CsvForm extends \yii\db\ActiveRecord
 {
     public $file;
+    public $request;
 
     public function rules()
     {
         return [
             [['file'], 'required'],
-            [['file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'csv', 'maxSize' => 1024 * 1024 * 10],
+            [['file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'csv,xlsx', 'maxSize' => 1024 * 1024 * 10],
             // [['file'], 'allowEmpty' => false]
         ];
     }

@@ -32,6 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'endereco',
             'nuit',
             'contacto',
+            [
+                'attribute' => 'sala',
+                'value' => function ($model) {
+                    return   $model->sala['nome'];
+                },
+
+
+            ],
             'created_at:date',
             // 'created_by',
 

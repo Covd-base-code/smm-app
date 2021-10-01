@@ -2,40 +2,28 @@
 
 use yii\bootstrap4\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use common\models\Agendamento;
+use frontend\controllers\AgendamentoController;
 ?>
-<div class="form">
+<div class="lista-form">
 
 
-    <?php $form = ActiveForm::begin(
-        [
-            'options' => [
-                'enctype' => 'multipart/form-data',
-                'id' => 'csv-form', 'enableAjaxValidation' => false
-            ]
-        ]
-    ); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
 
     <?php
     //echo $form->errorSummary($model); 
     ?>
 
-    <div class="row">
-        <?php echo $form->field($model, 'csvfile'); ?>
-        <?php
-        $this->widget('CMultiFileUpload', array(
-            'model' => $model,
-            'name' => 'csvfile',
-            'max' => 1,
-            'accept' => 'csv',
-            'duplicate' => 'Duplicate file!',
-            'denied' => 'Invalid file type',
-        ));
-        ?>
-        <?php echo $form->error($model, 'csvfile'); ?>
-    </div>
 
-    <div class="row buttons">
-        <?php echo Html::submitButton('Import', array("id" => "Import", 'name' => 'Import')); ?>
+    <?= $form->field($model, 'requisicao')->dropdownList(ArrayHelper::map(Agendamento::find()->Where(['created_by' => Yii::$app->user->id])->distinct()->orderBy('empresa ASC')->asArray()->all(), 'id', 'empresa', 'data_agendamento'), ['prompt' => 'Selecione uma requisicao', 'id' => 'request_id']) ?>
+    <?= $form->field($model, 'lista')->fileInput() ?>
+
+
+    <div class="form-group">
+        <?= Html::submitButton('Submeter', ['class' => 'btn btn-danger']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 </div><!-- form -->
