@@ -26,7 +26,8 @@
         "phpoffice/phpspreadsheet": "*",
         "ext-gd": "*",
         "ext-zip": "*",
-        "hscstudio/yii2-export": "1.0.0"
+        "hscstudio/yii2-export": "1.0.0",
+        "kartik-v/yii2-widget-fileinput": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

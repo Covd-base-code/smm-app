@@ -14,11 +14,11 @@ use frontend\controllers\AgendamentoController;
     ]); ?>
 
     <?php
-    //echo $form->errorSummary($model); 
+    echo $form->errorSummary($model);
     ?>
 
 
-    <?= $form->field($model, 'requisicao')->dropdownList(ArrayHelper::map(Agendamento::find()->Where(['created_by' => Yii::$app->user->id])->distinct()->orderBy('empresa ASC')->asArray()->all(), 'id', 'empresa', 'data_agendamento'), ['prompt' => 'Selecione uma requisicao', 'id' => 'request_id']) ?>
+    <?= $form->field($model, 'requisicao')->dropdownList(ArrayHelper::map(Agendamento::find()->Where(['created_by' => Yii::$app->user->id])->distinct()->orderBy('empresa ASC')->asArray()->all(), 'id', 'empresa', 'data_agendamento'), ['prompt' => 'Selecione uma requisição', 'id' => 'request_id']) ?>
     <?= $form->field($model, 'lista')->fileInput() ?>
 
 

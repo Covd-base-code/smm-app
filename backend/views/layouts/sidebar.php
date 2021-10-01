@@ -52,12 +52,9 @@
       [
         'label' => 'Agendamentos', 'url' => ['/agendamento/index']
       ],
-      // [
-      //   'label' => 'Requisições', 'url' => [Yii::$app->urlManager->createUrl('frontend/agendamento/index.php')]
-      // ],
-      // [
-      //   'label' => 'Lista', 'url' => ['/csv-form/create']
-      // ],
+      [
+        'label' => 'Listas', 'url' => ['/lista/index']
+      ],
     ]
   ]) ?>
 </aside>

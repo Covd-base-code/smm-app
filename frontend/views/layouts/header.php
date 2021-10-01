@@ -6,7 +6,13 @@ use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Html;
 
 AppAsset::register($this);
+?>
 
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+
+</head>
+<?php
 NavBar::begin([
     'brandLabel' => Yii::$app->name,
     'brandUrl' => Yii::$app->homeUrl,
@@ -37,3 +43,9 @@ echo Nav::widget([
     'items' => $menuItems,
 ]);
 NavBar::end();
+
+?>
+
+
+<!-- on your view layout file HEAD section -->
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" crossorigin="anonymous"></script>

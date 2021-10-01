@@ -16,9 +16,9 @@ $this->title = 'SMM';
     <div class="jumbotron text-center bg-transparent mt-2 ">
         <h1 class="display-7 text-danger">Marque as Vacinações da sua empresa</h1>
 
-        <p class="lead">Baixe e preencha o ficheiro de template excel abaixo</p>
+        <p class="lead">Baixe e preencha o ficheiro de template CSV abaixo</p>
 
-        <p><a class="btn btn-lg btn-danger" download="template_vacinacao" href="<?= Yii::$app->request->baseUrl ?>/storage/listas/lista.xlsx">Baixar template</a></p>
+        <p><a class="btn btn-lg btn-danger" download="template_vacinação" href="<?= Yii::$app->request->baseUrl ?>/storage/templates/template-vacinacao.csv">Baixar template</a></p>
     </div>
 
     <div class="body-content">

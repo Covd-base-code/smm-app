@@ -1,7 +1,10 @@
 <?php
 
 use yii\bootstrap4\Html;
+use kartik\icons\FontAwesomeAsset;
+use phpDocumentor\Reflection\DocBlock\Tags\Reference\Url;
 
+// FontAwesomeAsset::register($this);
 
 /** @var $dataProvider \use yii\data\ActiveDataProvider;*/
 
@@ -24,14 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at:date',
             // [
             //     'class' => 'yii\grid\ActionColumn',
-            //     'template' => '{detalhes}',
-            //     'buttons' => [
-            //         'detalhes' => function ($url, $model) {
-            //             return Html::a('<span class="glyphicon glyphicon-plus"></span>', $url, [
-
-            //                 'title' => Yii::t('yii', 'Create'),
-            //             ]);
-            //         }
+            //     'contentOptions' => [],
+            //     'header' => 'Actions',
+            //     'template' => '{view}',
+            //     'visibleButtons' => [
+            //         'view' => function ($model) {
+            //             return $this->render('index', ['/lista/index']);
+            //         },
             //     ]
             // ],
         ],

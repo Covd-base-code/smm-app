@@ -97,9 +97,7 @@ class ListaController extends Controller
 
         $model = new Lista();
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+
         if ($model->load(Yii::$app->request->post())) {
 
             $model->lista = UploadedFile::getInstance($model, 'lista');
@@ -141,13 +139,19 @@ class ListaController extends Controller
                         $query = Yii::$app->db->createCommand($sql)->execute();
                     }
                     if ($query) {
+
                         Yii::$app->session->setFlash('success', "Lista submetida com sucesso.");
+                        return $this->refresh();
                     } else {
                         Yii::$app->session->setFlash('error', "Erro ao carregar lista.");
                     }
                 }
             }
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
