@@ -7,7 +7,7 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-backend',
+    'id' => '',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -15,6 +15,13 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@backend/views' => '@vendor/hail812/yii2-adminlte3/src/views'
+                ],
+            ],
         ],
         'user' => [
             'identityClass' => 'common\models\User',

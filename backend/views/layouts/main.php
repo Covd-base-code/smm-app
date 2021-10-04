@@ -1,89 +1,69 @@
 <?php
 
+use yii\helpers\Html;
+
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use backend\assets\AppAsset;
-use common\widgets\Alert;
-use yii\bootstrap4\Breadcrumbs;
-use yii\bootstrap4\Html;
-use yii\bootstrap4\Nav;
-use yii\bootstrap4\NavBar;
 
-AppAsset::register($this);
-$this->beginContent('@backend/views/layouts/base.php');
+if (Yii::$app->controller->action->id === 'login') {
+    /**
+     * Do not use this code in your template. Remove it. 
+     * Instead, use the code  $this->layout = '//main-login'; in your controller.
+     */
+    echo $this->render(
+        'main-login',
+        ['content' => $content]
+    );
+} else {
+
+    if (class_exists('backend\assets\AppAsset')) {
+        backend\assets\AppAsset::register($this);
+    } else {
+        frontend\assets\AppAsset::register($this);
+    }
+
+    dmstr\web\AdminLteAsset::register($this);
+
+    $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
 ?>
-<!-- <?php $this->beginPage() ?> -->
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" class="h-100">
+    <?php $this->beginPage() ?>
+    <!DOCTYPE html>
+    <html lang="<?= Yii::$app->language ?>">
 
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-    <link rel="shortcut icon" href="<?= Yii::$app->request->baseUrl ?>/img/logo.png" type="image/x-icon" />
+    <head>
+        <meta charset="<?= Yii::$app->charset ?>" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?= Html::csrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <?php $this->head() ?>
+    </head>
 
-</head>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <?php $this->beginBody() ?>
+        <div class="wrapper">
 
-<body class="d-flex flex-column h-100">
-    <?php $this->beginBody() ?>
+            <?= $this->render(
+                'header.php',
+                ['directoryAsset' => $directoryAsset]
+            ) ?>
 
-    <header>
-        <?php
-        NavBar::begin([
-            'brandLabel' => Yii::$app->name,
-            'brandUrl' => Yii::$app->homeUrl,
-            'options' => [
-                'class' => 'navbar-expand-lg navbar-light bg-danger shadow-sm fixed-top',
-            ],
-        ]);
-        // $menuItems = [
-        //     ['label' => 'Home', 'url' => ['/site/index']],
-        //     // ['label' => 'Sala', 'url' => ['/sala/create']],
-        // ];
-        if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-        } else {
-            $menuItems[] = '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>';
-        }
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav  ml-auto'],
-            'items' => $menuItems,
-        ]);
-        NavBar::end();
-        ?>
-    </header>
+            <?= $this->render(
+                'left.php',
+                ['directoryAsset' => $directoryAsset]
+            )
+            ?>
 
-    <main role="main" class="d-flex flex-shrink-0">
-        <?php echo $this->render('sidebar') ?>
-        <div class="container">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-            <?= Alert::widget() ?>
-            <?= $content ?>
+            <?= $this->render(
+                'content.php',
+                ['content' => $content, 'directoryAsset' => $directoryAsset]
+            ) ?>
+
         </div>
-    </main>
 
-    <!-- <footer class="footer mt-auto py-3 text-muted">
-        <div class="container">
-            <p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-            <p class="float-right"><?= Yii::powered() ?></p>
-        </div>
-    </footer> -->
+        <?php $this->endBody() ?>
+    </body>
 
-    <?php $this->endBody() ?>
-</body>
-
-</html>
-
-<?php $this->endContent(); ?>
+    </html>
+    <?php $this->endPage() ?>
+<?php } ?>

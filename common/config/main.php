@@ -1,6 +1,6 @@
 <?php
 return [
-    'name' => 'SMM',
+    'name' => 'Bit Consulting',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',

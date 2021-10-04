@@ -105,6 +105,7 @@ class SalaController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', "Sala actualizada com sucesso.");
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -123,7 +124,7 @@ class SalaController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash('success', "Sala removida com sucesso.");
         return $this->redirect(['index']);
     }
 

@@ -21,13 +21,18 @@
     "require": {
         "php": ">=5.6.0||^8.0",
         "yiisoft/yii2": "~2.0.14",
-        "yiisoft/yii2-bootstrap4": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "phpoffice/phpspreadsheet": "*",
         "ext-gd": "*",
         "ext-zip": "*",
         "hscstudio/yii2-export": "1.0.0",
-        "kartik-v/yii2-widget-fileinput": "dev-master"
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "kartik-v/yii2-grid": "dev-master",
+        "yiisoft/yii2-bootstrap": "@dev",
+        "rmrevin/yii2-fontawesome": "2.10.*",
+        "yiisoft/yii2-bootstrap4": "^2.0",
+        "dmstr/yii2-adminlte-asset": "^2.6",
+        "kartik-v/yii2-widget-datepicker": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

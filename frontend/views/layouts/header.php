@@ -1,51 +1,102 @@
 <?php
 
+use yii\helpers\Html;
+
+/* @var $this \yii\web\View */
+/* @var $content string */
 use frontend\assets\AppAsset;
-use yii\bootstrap4\Nav;
-use yii\bootstrap4\NavBar;
-use yii\bootstrap4\Html;
 
 AppAsset::register($this);
 ?>
 
-<head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-
-</head>
-<?php
-NavBar::begin([
-    'brandLabel' => Yii::$app->name,
-    'brandUrl' => Yii::$app->homeUrl,
-    'options' => ['class' => 'navbar-expand-lg navbar-light bg-danger shadow-sm fixed-top']
-]);
-
-if (Yii::$app->user->isGuest) {
-    $menuItems[] = ['label' => 'Registar', 'url' => ['/../site/signup']];
-    $menuItems[] = ['label' => 'Entrar', 'url' => ['/../site/login']];
-} else {
-    $menuItems[] = '<li>'
-        . Html::beginForm(['/site/logout'], 'post')
-        . Html::submitButton(
-            'Logout (' . Yii::$app->user->identity->username . ')',
-            ['class' => 'btn btn-link logout']
-        )
-        . Html::endForm()
-        . '</li>';
-
-    // $menuItems[] = [
-    //     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-    //     'url' => ['/site/logout'],
-    //     'linkOptions' => ['data-method' => 'post']
-    // ];
-}
-echo Nav::widget([
-    'options' => ['class' => 'navbar-nav ml-auto'],
-    'items' => $menuItems,
-]);
-NavBar::end();
-
-?>
+<header class="main-header">
 
 
-<!-- on your view layout file HEAD section -->
-<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" crossorigin="anonymous"></script>
+    <?= Html::a('<span class="logo-mini bg-danger"><strong>Bit Consulting</strong></span><strong>' . Yii::$app->name . '</strong>', Yii::$app->homeUrl, ['class' => 'logo  bg-danger']) ?>
+
+    <nav class="navbar navbar-static-top bg-danger" role="navigation">
+
+        <a href="#" class="sidebar-toggle mr-auto" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+
+            <ul class="nav navbar-nav">
+
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-success">4</span>
+                    </a> -->
+
+                </li>
+                <li class="dropdown notifications-menu">
+                    <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">10</span>
+                    </a> -->
+
+                </li>
+                <!-- Tasks: style can be found in dropdown.less -->
+                <li class="dropdown tasks-menu">
+                    <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-flag-o"></i>
+                        <span class="label label-danger">9</span>
+                    </a> -->
+
+                </li>
+                <!-- User Account: style can be found in dropdown.less -->
+
+                <li class="dropdown user user-menu ml-auto">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image" />
+                        <span class="hidden-xs"><?php echo Yii::$app->user->identity->username ?></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+
+                            <p>
+                                Alexander Pierce - Web Developer
+                                <small>Contacto</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <!-- <li class="user-body">
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Followers</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Sales</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Friends</a>
+                            </div>
+                        </li> -->
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                                <?= Html::a(
+                                    'Sign out',
+                                    ['/site/logout'],
+                                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                                ) ?>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- User Account: style can be found in dropdown.less -->
+                <!-- <li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+</header>

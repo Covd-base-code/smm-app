@@ -7,7 +7,7 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-frontend',
+    'id' => '',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     // 'defaultRoute' => '/frontend/requisicoes/home',
@@ -15,6 +15,13 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@frontend/views' => '@vendor/hail812/yii2-adminlte3/src/views'
+                ],
+            ],
         ],
         'user' => [
             'identityClass' => 'common\models\User',

@@ -3,20 +3,20 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `{{%lista}}`.
+ * Handles the creation of table `{{%paciente}}`.
  * Has foreign keys to the tables:
  *
  * - `{{%Agendamento}}`
  * - `{{%User}}`
  */
-class m210926_170828_create_lista_table extends Migration
+class m211004_004143_create_paciente_table extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('{{%lista}}', [
+        $this->createTable('{{%paciente}}', [
             'id' => $this->primaryKey(),
             'nome' => $this->string()->notNull(),
             'sexo' => $this->string()->notNull(),
@@ -30,21 +30,20 @@ class m210926_170828_create_lista_table extends Migration
             'numero_documento' => $this->string()->notNull(),
             'requisicao' => $this->integer(11),
             'created_by' => $this->integer(11),
-            'created_at' => $this->integer(11),
-            'updated_at' => $this->integer(11),
+            'created_at' => $this->string(11),
         ]);
 
         // creates index for column `requisicao`
         $this->createIndex(
-            '{{%idx-lista-requisicao}}',
-            '{{%lista}}',
+            '{{%idx-paciente-requisicao}}',
+            '{{%paciente}}',
             'requisicao'
         );
 
         // add foreign key for table `{{%Agendamento}}`
         $this->addForeignKey(
-            '{{%fk-lista-requisicao}}',
-            '{{%lista}}',
+            '{{%fk-paciente-requisicao}}',
+            '{{%paciente}}',
             'requisicao',
             '{{%Agendamento}}',
             'id',
@@ -53,15 +52,15 @@ class m210926_170828_create_lista_table extends Migration
 
         // creates index for column `created_by`
         $this->createIndex(
-            '{{%idx-lista-created_by}}',
-            '{{%lista}}',
+            '{{%idx-paciente-created_by}}',
+            '{{%paciente}}',
             'created_by'
         );
 
         // add foreign key for table `{{%User}}`
         $this->addForeignKey(
-            '{{%fk-lista-created_by}}',
-            '{{%lista}}',
+            '{{%fk-paciente-created_by}}',
+            '{{%paciente}}',
             'created_by',
             '{{%User}}',
             'id',
@@ -76,28 +75,28 @@ class m210926_170828_create_lista_table extends Migration
     {
         // drops foreign key for table `{{%Agendamento}}`
         $this->dropForeignKey(
-            '{{%fk-lista-requisicao}}',
-            '{{%lista}}'
+            '{{%fk-paciente-requisicao}}',
+            '{{%paciente}}'
         );
 
         // drops index for column `requisicao`
         $this->dropIndex(
-            '{{%idx-lista-requisicao}}',
-            '{{%lista}}'
+            '{{%idx-paciente-requisicao}}',
+            '{{%paciente}}'
         );
 
         // drops foreign key for table `{{%User}}`
         $this->dropForeignKey(
-            '{{%fk-lista-created_by}}',
-            '{{%lista}}'
+            '{{%fk-paciente-created_by}}',
+            '{{%paciente}}'
         );
 
         // drops index for column `created_by`
         $this->dropIndex(
-            '{{%idx-lista-created_by}}',
-            '{{%lista}}'
+            '{{%idx-paciente-created_by}}',
+            '{{%paciente}}'
         );
 
-        $this->dropTable('{{%lista}}');
+        $this->dropTable('{{%paciente}}');
     }
 }

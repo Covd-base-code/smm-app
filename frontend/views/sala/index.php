@@ -10,7 +10,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="sala-index">
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php echo \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         // 'itemView' => 'free_room'

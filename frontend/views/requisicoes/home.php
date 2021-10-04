@@ -4,7 +4,7 @@
 
 use yii\bootstrap4\Html;
 
-$this->title = 'SMM';
+// $this->title = 'SMM';
 ?>
 <div class="site-index">
 

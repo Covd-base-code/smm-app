@@ -19,7 +19,7 @@ use yii\helpers\ArrayHelper;
 
     <p><?php echo $form->errorSummary($model) ?></p>
 
-    <?= $form->field($model, 'empresa')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'empresa')->textInput(['maxlength' => true]) ?>*
 
     <?= $form->field($model, 'endereco')->textInput(['maxlength' => true]) ?>
 

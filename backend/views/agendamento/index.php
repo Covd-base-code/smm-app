@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="sala-index">
-    <h1><?= Html::encode($this->title) ?></h1>
+
     <?php echo \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
@@ -27,12 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at:date',
             // [
             //     'class' => 'yii\grid\ActionColumn',
-            //     'contentOptions' => [],
-            //     'header' => 'Actions',
-            //     'template' => '{view}',
+            //     'visibleButtons' => ['delete' => false, 'update' => false, 'view' => true],
             //     'visibleButtons' => [
             //         'view' => function ($model) {
-            //             return $this->render('index', ['/lista/index']);
+            //             return $this->render('index', ['model' => $model]);
             //         },
             //     ]
             // ],
